@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="相澤・山﨑・山肩・松井研究室の記念ページ" />
+  <title>相澤・山﨑・山肩・松井研究室｜Memorial Archive</title>
+  <style>
+    :root {
+      --bg: #f7f4ec;
+      --bg-soft: #fffdf8;
+      --panel: rgba(255,255,255,0.82);
+      --panel-hover: #ffffff;
+      --text: #26332f;
+      --muted: #66736e;
+      --accent: #9a7a32;
+      --accent-soft: rgba(154,122,50,0.14);
+      --line: rgba(51,76,68,0.16);
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 8%, rgba(214,187,116,0.22), transparent 28%),
+        radial-gradient(circle at 92% 18%, rgba(133,177,160,0.20), transparent 30%),
+        linear-gradient(180deg, #fffdf8 0%, #f4f0e6 100%);
+      line-height: 1.8;
+      letter-spacing: 0.035em;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.018;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      z-index: 10;
+    }
+
+    header {
+      min-height: auto;
+      display: grid;
+      place-items: center;
+      padding: 70px 24px 54px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: auto 10% 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: .65;
+    }
+
+    .hero {
+      width: min(var(--max), 100%);
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: var(--accent);
+      opacity: .75;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.55rem, 4.8vw, 4.35rem);
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: 0.045em;
+      white-space: nowrap;
+    }
+
+    .subtitle {
+      margin: 30px auto 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .hero-mark {
+      margin: 32px auto 0;
+      width: 82px;
+      height: 82px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-family: Georgia, serif;
+      font-size: 1.1rem;
+      letter-spacing: .15em;
+      box-shadow: 0 0 0 12px rgba(154,122,50,0.06);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      backdrop-filter: blur(14px);
+      background: rgba(255,253,248,0.88);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav .inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      padding: 15px 0;
+      overflow-x: auto;
+      white-space: nowrap;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    main {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+      padding: 58px 0 76px;
+    }
+
+    section { margin-bottom: 58px; scroll-margin-top: 72px; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 22px;
+      margin-bottom: 36px;
+    }
+
+    .section-number {
+      color: var(--accent);
+      font-family: Georgia, serif;
+      font-size: .85rem;
+      letter-spacing: .18em;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(1.55rem, 3vw, 2.35rem);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .section-title::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, var(--line), transparent);
+    }
+
+    .intro-card {
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(248,244,233,.88));
+      box-shadow: 0 14px 34px rgba(70,82,75,.07);
+      padding: clamp(28px, 5vw, 56px);
+      position: relative;
+    }
+
+    .intro-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 84px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .intro-card p {
+      margin: 0;
+      color: #46554f;
+      font-size: 1.04rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 190px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform .25s ease, background .25s ease, border-color .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "↗";
+      position: absolute;
+      top: 22px;
+      right: 24px;
+      color: var(--accent);
+      font-family: Arial, sans-serif;
+      opacity: .75;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      background: var(--panel-hover);
+      border-color: rgba(154,122,50,.42);
+    }
+
+    .card small {
+      color: var(--accent);
+      font-family: Georgia, serif;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      margin: 18px 0 12px;
+      font-size: 1.42rem;
+      font-weight: 500;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: .95rem;
+    }
+
+    .links-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .link-row {
+      display: grid;
+      grid-template-columns: 1.15fr 2fr auto;
+      gap: 24px;
+      align-items: center;
+      padding: 24px 6px;
+      border-bottom: 1px solid var(--line);
+      transition: padding .2s ease, background .2s ease;
+    }
+
+    .link-row:hover {
+      padding-left: 18px;
+      background: linear-gradient(90deg, rgba(154,122,50,.09), transparent);
+    }
+
+    .link-row strong { font-size: 1.08rem; font-weight: 500; }
+    .link-row span { color: var(--muted); font-size: .92rem; }
+    .link-row b { color: var(--accent); font-family: Arial, sans-serif; font-weight: 400; }
+
+    .projects-note {
+      margin: -12px 0 26px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project {
+      min-height: 190px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.2), rgba(240,235,220,.72)),
+        radial-gradient(circle at 20% 20%, rgba(214,187,116,.22), transparent 42%),
+        #ffffff;
+      box-shadow: 0 12px 28px rgba(70,82,75,.07);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .project:hover { transform: translateY(-4px); border-color: rgba(154,122,50,.48); }
+    .project .tag { color: var(--accent); font: .75rem Georgia, serif; letter-spacing: .15em; }
+    .project h3 { margin: 10px 0 0; font-size: 1.45rem; font-weight: 500; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 44px 24px 54px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    footer .seal {
+      display: inline-block;
+      color: var(--accent);
+      border: 1px solid rgba(154,122,50,.45);
+      padding: 8px 14px;
+      margin-bottom: 15px;
+      letter-spacing: .18em;
+    }
+
+    @media (max-width: 760px) {
+      header { min-height: auto; padding-left: 12px; padding-right: 12px; }
+      h1 { font-size: clamp(1.18rem, 5.2vw, 2rem); letter-spacing: 0.015em; }
+      .grid, .project-grid { grid-template-columns: 1fr; }
+      .link-row { grid-template-columns: 1fr auto; gap: 6px 12px; }
+      .link-row span { grid-column: 1 / -1; }
+      nav .inner { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header id="top">
+    <div class="hero">
+      <div class="eyebrow">Laboratory Memorial Archive</div>
+      <h1>相澤・山﨑・山肩・松井研究室</h1>
+      <p class="subtitle">東京大学大学院 情報理工学系研究科 電子情報学専攻<br>研究・教育の歩みを未来へつなぐ記念アーカイブ</p>
+      <div class="hero-mark" aria-label="研究室記念章">AYYM</div>
+    </div>
+  </header>
+
+  <nav aria-label="ページ内メニュー">
+    <div class="inner">
+      <a href="#about">About</a>
+      <a href="#laboratories">Laboratories</a>
+      <a href="#publications">Publications</a>
+      <a href="#alumni">Alumni</a>
+      <a href="#projects">Projects</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="about">
+      <div class="section-head">
+        <span class="section-number">01</span>
+        <h2 class="section-title">記念ページについて</h2>
+      </div>
+      <div class="intro-card">
+        <p>
+          本ページは、相澤・山﨑・山肩・松井研究室の研究・教育活動の足跡を記録し、
+          研究室に関わった皆様の記憶と成果を未来へ伝えるための記念アーカイブです。
+          各研究室、研究業績、卒業生一覧の入口を、この1ページ内にまとめています。
+        </p>
+      </div>
+    </section>
+
+    <section id="laboratories">
+      <div class="section-head">
+        <span class="section-number">02</span>
+        <h2 class="section-title">研究室・教員</h2>
+      </div>
+      <div class="grid">
+        <a class="card" href="https://sites.google.com/view/aizawa-kiyoharu" target="_blank" rel="noopener noreferrer">
+          <div>
+            <small>Professor Emeritus</small>
+            <h3>相澤 清晴</h3>
+            <p>2025年3月退職。東京大学名誉教授、現在、情報基盤センター特任教授。</p>
+          </div>
+        </a>
+        <a class="card" href="https://www.cvm.t.u-tokyo.ac.jp/" target="_blank" rel="noopener noreferrer">
+          <div>
+            <small>Laboratory</small>
+            <h3>山﨑 研究室</h3>
+            <p>山﨑俊彦教授の研究室ウェブサイト。</p>
+          </div>
+        </a>
+        <a class="card" href="https://sites.google.com/view/yy-lab/" target="_blank" rel="noopener noreferrer">
+          <div>
+            <small>Laboratory</small>
+            <h3>山肩 研究室</h3>
+            <p>山肩洋子教授の研究室ウェブサイト。</p>
+          </div>
+        </a>
+        <a class="card" href="https://yusukematsui.me/index_jp.html" target="_blank" rel="noopener noreferrer">
+          <div>
+            <small>Laboratory</small>
+            <h3>松井 研究室</h3>
+            <p>松井勇佑講師の研究室ウェブサイト。</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="section-head">
+        <span class="section-number">03</span>
+        <h2 class="section-title">相澤清晴 論文・研究業績</h2>
+      </div>
+      <div class="links-list">
+        <a class="link-row" href="https://researchmap.jp/AI2009" target="_blank" rel="noopener noreferrer">
+          <strong>researchmap</strong>
+          <span>研究者情報・経歴・研究業績</span>
+          <b>↗</b>
+        </a>
+        <a class="link-row" href="https://scholar.google.co.jp/citations?user=CJRhhi0AAAAJ&hl=ja" target="_blank" rel="noopener noreferrer">
+          <strong>Google Scholar</strong>
+          <span>論文一覧・被引用情報</span>
+          <b>↗</b>
+        </a>
+        <a class="link-row" href="https://dblp.uni-trier.de/pid/71/5426.html" target="_blank" rel="noopener noreferrer">
+          <strong>DBLP</strong>
+          <span>コンピュータ科学分野の出版記録</span>
+          <b>↗</b>
+        </a>
+      </div>
+    </section>
+
+    <section id="alumni">
+      <div class="section-head">
+        <span class="section-number">04</span>
+        <h2 class="section-title">卒業生</h2>
+      </div>
+      <a class="intro-card" href="https://aizawakiyoharu.github.io/alumni-list/" target="_blank" rel="noopener noreferrer" style="display:block;">
+        <p style="display:flex;justify-content:space-between;gap:24px;align-items:center;">
+          <span>研究室を巣立った卒業生の一覧をご覧いただけます。</span>
+          <span style="color:var(--accent);font-family:Arial,sans-serif;white-space:nowrap;">View Alumni ↗</span>
+        </p>
+      </a>
+    </section>
+
+    <section id="projects">
+      <div class="section-head">
+        <span class="section-number">05</span>
+        <h2 class="section-title">現在進行中のプロジェクト</h2>
+      </div>
+      <p class="projects-note">以下は、現在進行する研究プロジェクトです。</p>
+      <div class="project-grid">
+        <a class="project" href="https://www.moviemap.jp" target="_blank" rel="noopener noreferrer">
+          <span class="tag">IMMERSIVE MEDIA</span>
+          <h3>ムービーマップ：360度映像からのバーチャル空間</h3>
+        </a>
+        <a class="project" href="https://manga109.github.io/manga109-project-website/ja/index.html" target="_blank" rel="noopener noreferrer">
+          <span class="tag">MANGA DATASET</span>
+          <h3>Manga109</h3>
+        </a>
+        <a class="project" href="https://food-log.notion.site/FoodLog-Athl-532157a68add4c80b352747b49317cae" target="_blank" rel="noopener noreferrer">
+          <span class="tag">FOOD COMPUTING</span>
+          <h3>FoodLog</h3>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="seal">MEMORIAL ARCHIVE</div>
+    <div>相澤・山﨑・山肩・松井研究室</div>
+    <div>Graduate School of Information Science and Technology, The University of Tokyo</div>
+  </footer>
+</body>
+</html>
